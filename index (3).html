@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deee Birthday</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    select{
+      border: 1px solid pink; /* Change to your desired color */
+            border-radius: 4px; /* Optional: for rounded corners */
+            padding: 5px; 
+            color: #7E87E1;
+            font-family:"Anton", sans-serif;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.59);
+    }
+    button{
+            border: 1px solid #5ED6A0; /* Change to your desired color */
+            border-radius: 4px; /* Optional: for rounded corners */
+            padding: 5px; 
+            color: #D0D65E;
+            font-family:"Anton", sans-serif;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.59);
+            
+            width:4em;
+    }
+    label{
+      color: #DA8ADB;
+    }
+    button:hover{
+         box-shadow: 0 0 5px rgba(0, 0, 0, 0.59);
+    }
+        body {
+            background-color: #D3D5E3;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family:"Anton", sans-serif;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Anton", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: #FFFFFF;
+            margin-top: 7em;
+            -webkit-text-stroke: 1px #B7B7BE;
+            position: relative;
+            border: 0.5px solid black;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.59);
+            width: 10em;
+            left: 6em;
+            overflow: hidden;
+        }
+
+        h1 span:nth-child(1) {
+            display: none;
+            width: 100px;
+            height: 3px;
+            position: absolute;
+            background: linear-gradient(to right, transparent, #6670DA);
+            top: 0;
+            left: -40px;
+            animation: sp1 3s infinite linear;
+        }
+
+        h1 span:nth-child(2) {
+            display: none;
+            width: 3px;
+            height: 25px;
+            position: absolute;
+            background: linear-gradient(to bottom, transparent, #6670DA);
+            top: -10px;
+            right: 0;
+            animation: sp1 3s infinite linear;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #ff69b4;
+            opacity: 0;
+            animation: confetti 2s ease-in-out infinite;
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .countdown-container {
+            display: flex;
+            gap: 27px;
+        }
+
+        .supcl {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+            width: 80vh;
+            position: relative;
+            top: 3em;
+        }
+
+        .circle {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #333;
+            font-family: Arial, sans-serif;
+            left: 6.5em;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.59);
+        }
+
+        .circle .number {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .circle .label {
+            font-size: 12px;
+        }
+
+        .circle .progress {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 10px solid transparent;
+            box-sizing: border-box;
+            transform: rotate(0deg);
+            transition: transform 0.1s linear;
+        }
+
+        #days .progress {
+            border-top-color: #ff4d4d;
+            filter: drop-shadow(0 0 15px #CE1A1A);
+        }
+
+        #hours .progress {
+            border-top-color: #ff9933;
+            filter: drop-shadow(0 0 15px #ff9933);
+        }
+
+        #minutes .progress {
+            border-top-color: #ffcc00;
+            filter: drop-shadow(0 0 15px #ffcc00);
+        }
+
+        #seconds .progress {
+            border-top-color: #66cc66;
+            filter: drop-shadow(0 0 15px #66cc66);
+        }
+
+        #birthdayForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            left: 5em;
+        }
+
+        #birthdayForm select, #birthdayForm button {
+            margin: 10px;
+            padding: 0px;
+            font-size: 16px;
+        }
+        #formContainer{
+          width:80vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="formContainer">
+              <h1>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Birthday date/month
+              </h1><br>
+        <form id="birthdayForm">
+            <label for="month">Select Month:</label>
+            <select id="month">
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+            </select>
+            <label for="day">Select Day:</label>
+            <select id="day">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+            <button type="button" onclick="setBirthday()">Submit</button>
+        </form>
+    </div>
+    <div id="countdownContainer" style="display: none;">
+        <h1>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Birthday Countdown
+        </h1><br>
+        <div class="supcl">
+            <div class="countdown-container">
+                <div class="circle" id="days">
+                    <div class="number" id="days-number">0</div>
+                    <div class="label">Days</div>
+                    <div class="progress" id="days-progress"></div>
+                </div>
+                <div class="circle" id="hours">
+                    <div class="number" id="hours-number">0</div>
+                    <div class="label">Hours</div>
+                    <div class="progress" id="hours-progress"></div>
+                </div>
+                <div class="circle" id="minutes">
+                    <div class="number" id="minutes-number">0</div>
+                    <div class="label">Minutes</div>
+                    <div class="progress" id="minutes-progress"></div>
+                </div>
+                <div class="circle" id="seconds">
+                    <div class="number" id="seconds-number">0</div>
+                    <div class="label">Seconds</div>
+                    <div class="progress" id="seconds-progress"></div>
+                </div>
+            </div>
+        </div>
+        <div id="specialMessage" style="display: none;">Happy Birthday!</div>
+    </div>
+    <script>
+        let countdownInterval;
+
+        function setBirthday() {
+            const month = document.getElementById('month').value;
+            const day = document.getElementById('day').value;
+
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const birthdayThisYear = new Date(`${month} ${day}, ${currentYear} 00:00:00`);
+            const birthdayNextYear = new Date(`${month} ${day}, ${currentYear + 1} 00:00:00`);
+
+            let birthday = now > birthdayThisYear ? birthdayNextYear : birthdayThisYear;
+
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('countdownContainer').style.display = 'block';
+
+            countdownInterval = setInterval(() => updateCountdown(birthday), 1000);
+            updateCountdown(birthday); // Initial call to update the countdown immediately
+        }
+
+        function updateCountdown(birthday) {
+            const now = new Date();
+            let distance = birthday.getTime() - now.getTime();
+
+            if (distance <= 0) {
+                distance += 365 * 24 * 60 * 60 * 1000; // Reset to next year's birthday
+                fname();
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days-number').innerText = days;
+            document.getElementById('hours-number').innerText = hours;
+            document.getElementById('minutes-number').innerText = minutes;
+            document.getElementById('seconds-number').innerText = seconds;
+
+            document.getElementById('days-progress').style.transform = `rotate(${(days / 365) * 360}deg)`;
+            document.getElementById('hours-progress').style.transform = `rotate(${(hours / 24) * 360}deg)`;
+            document.getElementById('minutes-progress').style.transform = `rotate(${(minutes / 60) * 360}deg)`;
+            document.getElementById('seconds-progress').style.transform = `rotate(${(seconds / 60) * 360}deg)`;
+        }
+
+        function fname() {
+            document.getElementById('specialMessage').style.display = 'block';
+            startConfetti();
+        }
+
+        function startConfetti() {
+            for (let i = 0; i < 200; i++) {
+                createConfetti();
+            }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = getRandomColor();
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(confetti);
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff69b4', '#ffb6c1', '#ffc0cb', '#ff1493', '#db7093'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>
